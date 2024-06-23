@@ -10,11 +10,14 @@ const AdminPage = () => {
   const [numVoters, setNumVoters] = useState("");
   const [role, setRole] = useState("");
   const [candidates, setCandidates] = useState([
-    { name: "", rollNumber: "", standard: "" },
+    { name: "", rollNumber: "", standard: "", votes: 0 },
   ]);
 
   const addCandidate = () => {
-    setCandidates([...candidates, { name: "", rollNumber: "", standard: "" }]);
+    setCandidates([
+      ...candidates,
+      { name: "", rollNumber: "", standard: "", votes: 0 },
+    ]);
   };
 
   const handleChange = (
