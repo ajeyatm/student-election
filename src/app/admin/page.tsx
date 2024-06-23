@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const AdminPage = () => {
   const [schoolName, setSchoolName] = useState("");
-  const [electionOfficer, setEllectionOficer] = useState("");
+  const [electionOfficer, setElectionOficer] = useState("");
   const [numVoters, setNumVoters] = useState("");
   const [role, setRole] = useState("");
   const [candidates, setCandidates] = useState([
@@ -79,8 +79,8 @@ const AdminPage = () => {
         <input
           type="text"
           className="border p-2 w-full"
-          value={schoolName}
-          onChange={(e) => setEllectionOficer(e.target.value)}
+          value={electionOfficer}
+          onChange={(e) => setElectionOficer(e.target.value)}
         />
       </div>
       <div className="mb-4">

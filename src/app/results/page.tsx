@@ -17,11 +17,10 @@ const ResultsPage = () => {
 
   const handleDeclareWinner = () => {
     if (!election) return;
-
     let winnerName = "";
     let maxVotes = -1;
-
-    Object.entries(election.votes).forEach(([candidateId, votes]) => {
+    Object.entries(election.votes).forEach(([candidateId, _votes]) => {
+      const votes = Number(_votes);
       if (votes > maxVotes) {
         maxVotes = votes;
         const candidate = election.candidates.find(
@@ -32,7 +31,6 @@ const ResultsPage = () => {
         }
       }
     });
-
     alert(`Winner for ${election.role} role is: ${winnerName}`);
   };
 
