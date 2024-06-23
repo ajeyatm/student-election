@@ -37,15 +37,15 @@ const AdminPage = () => {
     }
 
     // Validate votes count
-    let totalVotes = 0;
-    candidates.forEach((candidate) => {
-      totalVotes += Number(candidate.votes);
-    });
+    // let totalVotes = 0;
+    // candidates.forEach((candidate) => {
+    //   totalVotes += Number(candidate.votes);
+    // });
 
-    if (totalVotes > Number(numVoters)) {
-      alert("Total votes cannot exceed the number of voters.");
-      return;
-    }
+    // if (totalVotes > Number(numVoters)) {
+    //   alert("Total votes cannot exceed the number of voters.");
+    //   return;
+    // }
 
     const electionId = new Date().getTime().toString();
     localStorage.setItem(

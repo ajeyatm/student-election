@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const VotePage = () => {
   const [electionId, setElectionId] = useState("");
@@ -8,6 +8,9 @@ const VotePage = () => {
   const [selectedCandidate, setSelectedCandidate] = useState<string | null>(
     null
   );
+
+  const [highlight, setHighlight] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleFetchElection = () => {
     const storedElection = localStorage.getItem(electionId);
@@ -35,11 +38,22 @@ const VotePage = () => {
     localStorage.setItem(electionId, JSON.stringify(newElection));
     setElection(newElection);
     setSelectedCandidate(candidateId);
-    alert("Vote registered!");
+    setHighlight(true);
+    // alert("Vote registered!");
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHighlight(false);
+    }, 3 * 1000);
+  }, [highlight]);
 
   return (
     <div className="max-w-md mx-auto">
+      <audio ref={audioRef} src="/beep.mp3" />
       <h1 className="text-2xl font-bold mb-4">Vote</h1>
       <div className="mb-4">
         <label className="block mb-2">Enter Election ID:</label>
@@ -65,7 +79,7 @@ const VotePage = () => {
               key={candidate.rollNumber}
               onClick={() => handleVote(candidate.rollNumber)}
               className={`block mb-2 p-2 w-full border ${
-                selectedCandidate === candidate.rollNumber
+                selectedCandidate === candidate.rollNumber && highlight
                   ? "bg-green-500 text-white"
                   : ""
               }`}

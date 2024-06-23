@@ -55,7 +55,7 @@ const ResultsPage = () => {
       {election && (
         <div>
           <h2 className="text-xl font-semibold mb-2">{election.schoolName}</h2>
-          <h3 className="text-lg mb-2">{election.role}</h3>
+          <h3 className="text-lg mb-2 font-semibold">{election.role}</h3>
           <ul className="mb-4">
             {election.candidates.map((candidate: any) => (
               <li
